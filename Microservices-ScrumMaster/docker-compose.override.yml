@@ -1,0 +1,69 @@
+version: '3.4'
+
+services:
+    taskissuedb:
+        container_name: taskissuedb
+        restart: always
+        volumes:
+            - ${WEBAPP_STORAGE_HOME}/site:/data/db
+        ports:
+            - "27017:27017"
+    sprintactivedb:
+        container_name: sprintactivedb
+        restart: always        
+        ports:
+            - "6379:6379"   
+    rabbitmq:
+        container_name: rabbitmq
+        restart: always
+        ports:
+            - "5672:5672"
+            - "15672:15672"
+    taskissue.api:
+        container_name: taskissueapi
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+            - "CatalogDatabaseSettings:ConnectionString=mongodb://taskissuedb:27017"
+        depends_on:
+            - taskissuedb
+        volumes:
+            - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
+            - ${HOME}/.aspnet/https:/root/.aspnet/https/
+        ports:
+            - "7000:80"
+    sprintactive.api:
+        container_name: sprintactiveapi
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+            - "ConnectionStrings:Redis=sprintactivedb:6379"
+            - "EventBus:HostName=rabbitmq"
+        depends_on:
+            - sprintactivedb
+            - rabbitmq
+        volumes:
+            - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
+            - ${HOME}/.aspnet/https:/root/.aspnet/https/
+        ports:
+            - "7001:80"
+    sprintmanagement.api:
+        container_name: sprintmanagementapi
+        restart: on-failure
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development            
+            - "EventBus:HostName=rabbitmq"
+        depends_on:          
+            - rabbitmq
+        volumes:
+            - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
+            - ${HOME}/.aspnet/https:/root/.aspnet/https/
+        ports:
+            - "7002:80"    
+    ocelotapigateway:
+        container_name: ocelotapigateway
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+        volumes:
+            - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+            - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+        ports:
+            - "6000:80"       

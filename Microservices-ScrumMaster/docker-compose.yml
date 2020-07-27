@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:
+  taskissuedb:
+    image: mongo
+  sprintactivedb:
+    image: redis
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+  taskissue.api:
+    image: ${DOCKER_REGISTRY-}taskissueapi
+    build:
+      context: .
+      dockerfile: src/TaskIssue/TaskIssue.API/Dockerfile
+  sprintactive.api:
+    image: ${DOCKER_REGISTRY-}sprintactive
+    build:
+      context: .
+      dockerfile: src/SprintActive/SprintActive.API/Dockerfile
+  sprintmanagement.api:
+    image: ${DOCKER_REGISTRY-}sprintmanagementapi
+    build:
+      context: .
+      dockerfile: src/SprintManagement/SprintManagement.API/Dockerfile
+  ocelotapigateway:
+    image: ${DOCKER_REGISTRY-}ocelotapigateway
+    build:
+      context: .
+      dockerfile: src/apigateway/OcelotAPIGateway/Dockerfile
