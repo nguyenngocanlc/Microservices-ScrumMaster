@@ -18,22 +18,22 @@ namespace SprintManagement.API.RabbitMQ
         private readonly IRabbitMQConnection _connection;
         private readonly IMediator _mediator;
         private readonly IMapper _mapper;
-        private readonly ISprintDetailRepository _repository; // we added this in order to resolve in mediatR
+        //private readonly ISprintDetailRepository _repository; // we added this in order to resolve in mediatR
 
-        public EventBusRabbitMQConsumer(IRabbitMQConnection connection, IMediator mediator, IMapper mapper, ISprintDetailRepository _repository)
+        //public EventBusRabbitMQConsumer(IRabbitMQConnection connection, IMediator mediator, IMapper mapper, ISprintDetailRepository _repository)
+        //{
+        //    _connection = connection ?? throw new ArgumentNullException(nameof(connection));
+        //    _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+        //    _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+        //    _repository = _repository ?? throw new ArgumentNullException(nameof(_repository));
+        //}
+
+        public EventBusRabbitMQConsumer(IRabbitMQConnection connection, IMediator mediator, IMapper mapper)
         {
             _connection = connection ?? throw new ArgumentNullException(nameof(connection));
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
-            _repository = _repository ?? throw new ArgumentNullException(nameof(_repository));
         }
-
-        //public EventBusRabbitMQConsumer(IRabbitMQConnection connection, IMediator mediator, IMapper mapper)
-        //{
-        //    _connection = connection ?? throw new ArgumentNullException(nameof(connection));
-        //    _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
-        //    _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));            
-        //}
 
         public void Consume()
         {

@@ -10,9 +10,9 @@
   "$schema": "http://json.schemastore.org/launchsettings.json",
   "profiles": {
     "IIS Express": {
-      "commandName": "IISExpress",
+      "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "http://localhost:5000/api/v1/taskissue",
+      "launchUrl": "api/v1/taskissue",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

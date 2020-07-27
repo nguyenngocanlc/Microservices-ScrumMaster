@@ -46,10 +46,10 @@ namespace TaskIssue.API
 
             #region Swagger Dependencies
 
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "TaskIssue API", Version = "v1" });
-            });
+            //services.AddSwaggerGen(c =>
+            //{
+            //    c.SwaggerDoc("v1", new OpenApiInfo { Title = "TaskIssue API", Version = "v1" });
+            //});
 
             #endregion
         }
@@ -71,11 +71,11 @@ namespace TaskIssue.API
                 endpoints.MapControllers();
             });
 
-            app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "TaskIssue API V1");
-            });
+            //app.UseSwagger();
+            //app.UseSwaggerUI(c =>
+            //{
+            //    c.SwaggerEndpoint("/swagger/v1/swagger.json", "TaskIssue API V1");
+            //});
         }
     }
 }

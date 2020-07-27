@@ -15,19 +15,19 @@ namespace TaskIssue.API.Entities
         public string Summary { get; set; }
         public string Description { get; set; }
 
-        [BsonElement("Labels")]
+        //[BsonElement("Labels")]
         public string Labels { get; set; }
         public decimal StoryPoint { get; set; }
 
-        [BsonElement("SprintId")]
+        //[BsonElement("SprintId")]
         public string SprintId { get; set; }
         public string LinkedIssues { get; set; }
         public bool Flagged { get; set; }
 
-        [BsonElement("AssigneeUserId")]
+        //[BsonElement("AssigneeUserId")]
         public string AssigneeUserId { get; set; }
 
-        [BsonElement("ReporterUserId")]
+        //[BsonElement("ReporterUserId")]
         public string ReporterUserId { get; set; }     
         public string Status { get; set; }
         public bool Completed { get; set; }

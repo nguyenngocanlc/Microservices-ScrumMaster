@@ -39,6 +39,30 @@
     },
     //SprintActive API
     {
+      "DownstreamPathTemplate": "/api/v1/SprintActive/GetSprintActive/{projectId}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "5001"
+        }
+      ],
+      "UpstreamPathTemplate": "/SprintActive/GetSprintActive/{projectId}",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/v1/SprintActive/GetSprintDetailActives/{sprintId}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "5001"
+        }
+      ],
+      "UpstreamPathTemplate": "/SprintActive/GetSprintDetailActives/{sprintId}",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
       "DownstreamPathTemplate": "/api/v1/SprintActive",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
@@ -48,7 +72,7 @@
         }
       ],
       "UpstreamPathTemplate": "/SprintActive",
-      "UpstreamHttpMethod": [ "GET", "POST" ]
+      "UpstreamHttpMethod": [ "POST" ]
     },
     {
       "DownstreamPathTemplate": "/api/v1/SprintActive/{sprintId}",
@@ -63,7 +87,7 @@
       "UpstreamHttpMethod": [ "DELETE" ]
     },
     {
-      "DownstreamPathTemplate": "/api/v1/SprintActive/UpdateIssueInSprintCommand",
+      "DownstreamPathTemplate": "/api/v1/SprintActive/UpdateIssueInSprint",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -71,12 +95,12 @@
           "Port": "5001"
         }
       ],
-      "UpstreamPathTemplate": "/SprintActive/UpdateIssueInSprintCommand",
+      "UpstreamPathTemplate": "/SprintActive/UpdateIssueInSprint",
       "UpstreamHttpMethod": [ "POST" ]
     },
     //SprintManagement API
     {
-      "DownstreamPathTemplate": "/api/v1/Sprint",
+      "DownstreamPathTemplate": "/api/v1/Sprint/GetSprintById/{id}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -84,7 +108,7 @@
           "Port": "5002"
         }
       ],
-      "UpstreamPathTemplate": "/Sprint",
+      "UpstreamPathTemplate": "/Sprint/GetSprintById/{id}",
       "UpstreamHttpMethod": [ "GET" ]
     },
     {

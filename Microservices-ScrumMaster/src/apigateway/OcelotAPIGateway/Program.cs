@@ -26,9 +26,7 @@ namespace OcelotAPIGateway
             {
                 config.AddJsonFile($"ocelot.json");
 
-                // for local test use below one, multi env json file not worked
-                //config.AddJsonFile($"configuration.{hostingContext.HostingEnvironment.EnvironmentName}.json", true, true);
-                // https://github.com/ThreeMammals/Ocelot/issues/249
+                
             });
     }
 }

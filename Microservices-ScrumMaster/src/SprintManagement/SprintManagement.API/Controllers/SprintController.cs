@@ -24,9 +24,10 @@ namespace SprintManagement.API.Controllers
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));          
         }
 
+        [Route("[action]/{id}")]
         [HttpGet]
         [ProducesResponseType(typeof(SprintResponse), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<SprintResponse>> GetSprint(int id)
+        public async Task<ActionResult<SprintResponse>> GetSprintById(int id)
         {
             var query = new GetSprintQuery(id);
             var sprint = await _mediator.Send(query);

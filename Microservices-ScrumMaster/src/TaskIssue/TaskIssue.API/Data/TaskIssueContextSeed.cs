@@ -28,8 +28,14 @@ namespace TaskIssue.API.Data
                      Labels="WebPortal",
                      StoryPoint=3,
                      SprintId="1",
+                     LinkedIssues="",
+                     Flagged=true,
+                     AssigneeUserId="userA",
+                     ReporterUserId="userB",
                      Status="Todo",
-                     CreatedOn=DateTime.Now
+                     Completed=false,                     
+                     CreatedBy="userB",                     
+                     UpdatedBy="userB",
                 },
                  new Issue()
                 {
@@ -38,9 +44,15 @@ namespace TaskIssue.API.Data
                      Description="Description bug detail",
                      Labels="WebPortal",
                      StoryPoint=3,
-                     SprintId="1",
-                     Status="Progress",
-                     CreatedOn=DateTime.Now
+                     SprintId="2",
+                      LinkedIssues="",
+                     Flagged=true,
+                     AssigneeUserId="userA",
+                     ReporterUserId="userB",
+                     Status="Todo",
+                     Completed=false,
+                     CreatedBy="userB",
+                     UpdatedBy="userB",
                 }
             };
         }

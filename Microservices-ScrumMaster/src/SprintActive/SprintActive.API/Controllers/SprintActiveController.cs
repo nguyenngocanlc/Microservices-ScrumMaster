@@ -40,7 +40,8 @@ namespace SprintActive.API.Controllers
             var sprint = await _repository.GetSprintActive(projectId);
             return Ok(sprint);
         }
-       
+
+        [Route("[action]/{sprintId}")]
         [HttpGet]
         [ProducesResponseType(typeof(Sprint), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<Sprint>> GetSprintDetailActives(int sprintId)
@@ -67,7 +68,7 @@ namespace SprintActive.API.Controllers
         [HttpPost]
         [ProducesResponseType((int)HttpStatusCode.Accepted)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        public async Task<ActionResult> UpdateIssueInSprintCommand([FromBody] SprintDetail sprintDetail)
+        public async Task<ActionResult> UpdateIssueInSprint([FromBody] SprintDetail sprintDetail)
         {
             // send UpdateIssueInSprintCommand event to rabbitMq 
             //sprintDetail must have TaskId,SprintId

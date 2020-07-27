@@ -13,7 +13,7 @@ namespace TaskIssue.API.Data
             var database = client.GetDatabase(settings.DatabaseName);
 
             Issues = database.GetCollection<Issue>(settings.CollectionName);
-            //TaskIssueContextSeed.SeedData(Issues);
+            TaskIssueContextSeed.SeedData(Issues);
         }
         public IMongoCollection<Issue> Issues { get; }
     }

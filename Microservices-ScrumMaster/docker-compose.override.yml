@@ -30,7 +30,7 @@ services:
             - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
             - ${HOME}/.aspnet/https:/root/.aspnet/https/
         ports:
-            - "7000:80"
+            - "5000:80"
     sprintactive.api:
         container_name: sprintactiveapi
         environment:
@@ -44,12 +44,13 @@ services:
             - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
             - ${HOME}/.aspnet/https:/root/.aspnet/https/
         ports:
-            - "7001:80"
+            - "5001:80"
     sprintmanagement.api:
         container_name: sprintmanagementapi
         restart: on-failure
         environment:
-            - ASPNETCORE_ENVIRONMENT=Development            
+            - ASPNETCORE_ENVIRONMENT=Development         
+            - "ConnectionStrings:SprintConnection=Server=localhost;Database=ScrumMasterDb;User Id=scrum;Password=scrum@123"
             - "EventBus:HostName=rabbitmq"
         depends_on:          
             - rabbitmq
@@ -57,7 +58,7 @@ services:
             - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
             - ${HOME}/.aspnet/https:/root/.aspnet/https/
         ports:
-            - "7002:80"    
+            - "5002:80"    
     ocelotapigateway:
         container_name: ocelotapigateway
         environment:
@@ -66,4 +67,4 @@ services:
             - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
             - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
         ports:
-            - "6000:80"       
+            - "8888:80"       
